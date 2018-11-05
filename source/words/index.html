@@ -1,0 +1,49 @@
+---
+title: Words
+description: Practise your English words.
+---
+
+<link rel="stylesheet" href="index/css/index.css">
+
+<div id='app'>
+  <div v-if="started">
+    <div v-if="finish">
+      <div class="text-big">Your result</div>
+      <ul>
+        <li v-for="(item, i) in result">
+          ${ sets[index][i].word }
+          <span class="badge badge-success" v-if="item">correct</span>
+          <span class="badge badge-danger" v-else>wrong</span>
+        </li>
+      </ul>
+    </div>
+    <div v-else>
+      <div class="text-big text-center">${ sets[index][pos].word }</div>
+      <div class="text-normal gray text-center" v-show="showAnswer">
+        ${ sets[index][pos].meaning }
+      </div>
+      <div class="text-center btn-main-group" v-show="mainBtnShow">
+        <button class="btn btn-main" v-on:click="onOK">
+          I know it!
+        </button>
+        <button class="btn btn-main" v-on:click="onPass">
+          I don't know it...
+        </button>
+        <button class="btn btn-main" v-on:click="onExit">
+          Exit
+        </button>
+      </div>
+    </div>
+  </div>
+  <div v-else>
+      <button v-for="(item, index) in sets" class="btn btn-set btn-primary"
+        v-on:click="onStart(index)">
+        <span class="text-big">Set ${ index + 1 }</span>
+        <p class="gray">100 Words</p>
+      </button>
+  </div>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+<script src="index/js/index.js"></script>
