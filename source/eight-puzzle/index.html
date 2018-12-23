@@ -1,0 +1,77 @@
+---
+title: 8 Puzzle
+date: 2018-12-21 13:23:49
+---
+
+<link rel="stylesheet" href="index.css">
+
+<div id="ed-container">
+  <div id="ed-controller">
+    <button class="btn" id="ed-btn-shuffle">Shuffle!</button>
+    <button class="btn" id="ed-btn-solve">Solve!</button>
+    <br>
+    Select the heuristic function:
+    <br>
+    <select id="ed-input-hFunc">
+      <option value ="0">h1: The number of wrong digits</option>
+      <option value ="1">h2: The sum of the distances from the wrong positions to the correct positions</option>
+    </select>
+    <br>
+    Select a start state:
+    <br>
+    <select id="ed-input-problem">
+      <option value ="-1">Random</option>
+      <option value ="0">[0, 1, 7, 4, 3, 8, 6, 2, 5]</option>
+    </select>
+  </div>
+  <div id="ed-info">
+    <p id="ed-info-state">Ready...</p>
+    <table>
+      <thead>
+        <th>OPEN</th>
+        <th>CLOSE</th>
+        <th>TOTAL</th>
+        <th>BEST</th>
+      </thead>
+      <tbody>
+        <tr>
+          <td id="ed-info-open">1</td>
+          <td id="ed-info-close">0</td>
+          <td id="ed-info-total">1</td>
+          <td id="ed-info-best"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div id="ed-playground">
+    <div id="ed-row-0" class="ed-row">
+      <div id="ed-cell-1" class="ed-cell">1</div>
+      <div id="ed-cell-2" class="ed-cell">2</div>
+      <div id="ed-cell-3" class="ed-cell">3</div>
+    </div>
+    <div id="ed-row-1" class="ed-row">
+      <div id="ed-cell-8" class="ed-cell">8</div>
+      <div id="ed-cell-0" class="ed-cell">0</div>
+      <div id="ed-cell-4" class="ed-cell">4</div>
+    </div>
+    <div id="ed-row-2" class="ed-row">
+      <div id="ed-cell-7" class="ed-cell">7</div>
+      <div id="ed-cell-6" class="ed-cell">6</div>
+      <div id="ed-cell-5" class="ed-cell">5</div>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <th>State</th>
+      <th>g(x)</th>
+      <th>h(x)</th>
+      <th>f(x)</th>
+    </thead>
+    <tbody id="ed-path">
+    </tbody>
+  </table>
+</div>
+
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
+<script src="main.js"></script>
