@@ -127,6 +127,7 @@ menu:
   #commonweal: /404/ || heartbeat
   Words: /words/
   8-Puzzle: /eight-puzzle/
+  XiangQi: /xiangqi/
 
 # Enable/Disable menu icons / item badges.
 menu_settings:
