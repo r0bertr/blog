@@ -1,5 +1,6 @@
 class XiangQi {
-  constructor(domID) {
+  constructor(domID, maxDepth) {
+    this.maxDepth = maxDepth;
     this.pickedPiece = null;
     this.boardID = '#' + domID;
     $(this.boardID).addClass('xq-board');
@@ -74,6 +75,9 @@ class XiangQi {
     that.removePath(that.model);
     // black moves
     that.alphaBeta();
+  }
+  setMaxDepth(d) {
+    this.maxDepth = d;
   }
   alphaBeta() {
     var that = this;
@@ -172,7 +176,7 @@ class XiangQi {
 
     var open = [], close = {}, root = new Node(this.model, 0, 0,
       Number.MAX_VALUE, -Number.MAX_VALUE, null, null);
-    var maxDepth = 3;
+    var maxDepth = this.maxDepth;
     open.push(root);
     while (open.length) {
       // fetch the top value
