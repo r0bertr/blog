@@ -125,7 +125,7 @@ menu:
   #schedule: /schedule/ || calendar
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
-  Words: /words/
+  # Words: /words/
   8-Puzzle: /eight-puzzle/
   XiangQi: /xiangqi/
 

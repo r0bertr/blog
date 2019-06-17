@@ -79,4 +79,4 @@ theme: next
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
   type: git
-  repo: https://github.com/hinanawitenshi/hinanawitenshi.github.io
+  repo: https://github.com/r0bertr/r0bertr.github.io
