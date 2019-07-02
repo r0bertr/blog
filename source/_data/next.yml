@@ -20,8 +20,8 @@ cache:
 # `styles: source/_data/styles.styl`
 custom_file_path:
   # Default paths: layout/_custom/*
-  #head: source/_data/head.swig
-  #header: source/_data/header.swig
+  # head: source/_data/head.swig
+  # header: source/_data/header.swig
   #sidebar: source/_data/sidebar.swig
 
   # Default path: source/css/_variables/custom.styl
@@ -126,8 +126,11 @@ menu:
   #sitemap: /sitemap.xml || sitemap
   #commonweal: /404/ || heartbeat
   # Words: /words/
-  8-Puzzle: /eight-puzzle/
-  XiangQi: /xiangqi/
+  8-Puzzle: /eight-puzzle/ || puzzle-piece
+  XiangQi: /xiangqi/ || gamepad
+  # SDVX:
+  #   default: /sdvx/ || gamepad
+  #   Tunes: /tunes || music
 
 # Enable/Disable menu icons / item badges.
 menu_settings:
@@ -140,9 +143,9 @@ menu_settings:
 
 # Schemes
 # scheme: Muse
-scheme: Mist
+# scheme: Mist
 # scheme: Pisces
-# scheme: Gemini
+scheme: Gemini
 
 
 # ---------------------------------------------------------------
