@@ -44,6 +44,136 @@ At this time, a perfect solution is using a stack. After pushing all the numbers
 
 As a good brother of stacks, queues are also easy to understand. It\'s **FIFO** property is extremely suitable to perform tasks with particular orders, especially when some tasks need to wait for some other tasks.
 
+## Recursion
+
+> Recursion is the name for the case when a function invokes itself or invokes a sequence of other functions, one of which eventually invokes the first function again.
+
+Recursion is a good way to fast accomplish a specific group of tasks like factorials. However, any recursive program can be rewritten to a iterative program with higher performance. Therefore, in modern software development, it is not a good idea to use recursion directly, but it is still worthwhile to learn because it provides a good method for us to find out answers of some complicated questions.
+
+There are two main situations under which we may let recursion in. The first one is that we can write a formula which specify the relationship between the current state and one or a few previous states. Besides, an initial state is specified. For example, the factorials can be written like
+
+$$
+n! = \begin{cases}
+1 &n = 0 \\
+n(n - 1)! & n > 0
+\end{cases}
+$$
+
+$n = 0$ is the initial state and when $n > 0$, the result is computed by $(n - 1)!$, a same problem but with a smaller scale.
+
+### Example: The Towers of Hanoi
+
+If someone would like to teach recursion, he or she must introduce this typical problem -- The Towers of Hanoi. This is a question that almost every one knows but, not all people can write down the solution immediately.
+
+It is not so obvious that this problem is under the first situation, but we still can write down a formula here. Let `m(n, s, d, t)` represents \"the steps move `n` disks from tower `s` to tower `d` using `t` as a temporary tower.\" Therefore, the formula can be written as
+
+$$
+m(n, s, d, t) = \begin{cases}
+\text{do nothing} & n = 0 \\
+m(n - 1, s, t, d) + m(1, s, d, t) + m(n - 1, t, d, s) & n > 1
+\end{cases}
+$$
+
+The following is a simple `C++` recursive program to accomplish the task.
+
+```c++
+void move(int n, int s, int d, int t) {
+    if (n > 0) {
+        move(n - 1, s, t, d);
+        printf("move %d from %d to %d\n", n, s, d);
+        move(n - 1, t, d, s);
+    }
+}
+```
+
+One more thing to say is that this program is terrible because every call produces two calls. Thus, with $n$ plates, the total number of calls is
+
+$$
+1 + 2 + 4 + \cdots + 2^{n - 1} = 2^n - 1
+$$
+
+Therefore, this is a program with $O(2^n)$ time complexity.
+
+---
+
+The second situation is that we need to do backtracking during the execution. In other words, we need to undo some operations that have already been done before. At this time, the structure of a recursive program is very useful. The next example is the typical Eight-Queens Puzzle, which will illustrate how the backtracking works.
+
+### Example: The Eight-Queens Puzzle
+
+Computers are good at enumerating. When they meet the Eight-Queens Puzzle, they simply try all possible positions row by row. Obviously, it is easy to reach a dead end and a backtracking need to be performed, so we use a recursive structure to accomplish the task.
+
+The following is a simple `C++` recursive program to solve the puzzle.
+
+```c++
+// The board is a 8x8 array with 0 representing empty and 1 representing
+// a queen.
+
+// canPlace validates whether (row, col) can be placed a queen on the board.
+bool canPlace(int board[8][8], int row, int col) {
+    // Validate the row and the column.
+    for (int i = 0; i < 8; i++)
+        if (board[row][i] && i != col || board[i][col] && i != row)
+            return false;
+
+    // Validate the diagonal.
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (board[i][j] && i != row && 
+                (i + j == row + col || i - j == row - col))
+                return false;
+        }
+    }
+
+    return true;
+}
+
+// eightQueensPuzzle returns true when the rows >= row can be placed
+// correctly on the board.
+bool eightQueensPuzzle(int board[8][8], int row) {
+    if (row == 8) return true;
+
+    // Enumerate the row.
+    for (int i = 0; i < 8; i++) {
+        if (canPlace(board, row, i)) {
+            board[row][i] = 1;
+            if (eightQueensPuzzle(board, row + 1)) {
+                // If the rows >= row + 1 can be placed correctly, since the
+                // current place is valid, the puzzle is solved.
+                break;
+            } else {
+                // The current place reaches a dead end, try the next place.
+                board[row][i] = 0;
+            }
+        }
+    }
+
+    // If the current row has one queen placed, a true is returned.
+    for (int i = 0; i < 8; i++) if (board[row][i]) return true;
+    return false
+}
+```
+
+Can you find all solutions of the Eight-Queens Puzzle?
+
+## Searching
+
+Every one knows the general idea of binary search. The problem is that when to use it to reduce the time complexity of a program. Here I would like to introduce a \"standard\" implementation of binary search. Note that even the general idea of binary search is the same, the actual times of comparison may still vary from implementations to implementations.
+
+Here is the code of searching in a sorted `vector` of integers.
+
+```c++
+int binarySearch(vector<int> &nums, int target) {
+    int left = 0, right = nums.size() - 1;
+    while (left <= right) {
+        int mid = (left + right) / 2;
+        if (nums[mid] == target) return mid;
+        if (nums[mid] < target) left = mid + 1;
+        else right = mid - 1;
+    }
+    return -1;
+}
+```
+
 ## Sorting
 
 Sorting is a very facinating topic in the field of algorithms. It can be simple, like perform a selection sort on a list of integers, and suitable for newcommers to learn. It is also worth thinking because the mergesort and the quicksort are two of the most typical algorithms applying the divide-and-conquer method, which are widely used in plenty of tasks. It is extremely useful because it can reduce the time complexity of searching. It also provides judgements of performances of other algorithms. In conclusion, it is worthwhile to learn sorting as many times as you can and to remember it in your heart.
