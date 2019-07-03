@@ -1,6 +1,7 @@
 ---
 title: Common Data Structures and Algorithms
 date: 2019-07-02 15:26:20
+mathjax: true
 tags:
     - English
 ---
@@ -54,8 +55,8 @@ There are two main situations under which we may let recursion in. The first one
 
 $$
 n! = \begin{cases}
-1 &n = 0 \\
-n(n - 1)! & n > 0
+    1 &n = 0 \\\\
+    n(n - 1)! & n > 0
 \end{cases}
 $$
 
@@ -69,8 +70,8 @@ It is not so obvious that this problem is under the first situation, but we stil
 
 $$
 m(n, s, d, t) = \begin{cases}
-\text{do nothing} & n = 0 \\
-m(n - 1, s, t, d) + m(1, s, d, t) + m(n - 1, t, d, s) & n > 1
+\text{do nothing} & n = 0 \\\\
+m(n - 1, s, t, d) + m(1, s, d, t) + m(n - 1, t, d, s) & n > 0
 \end{cases}
 $$
 
