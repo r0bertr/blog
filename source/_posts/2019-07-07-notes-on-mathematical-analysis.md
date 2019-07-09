@@ -76,6 +76,135 @@ $$
 2. 有界序列具有收敛的子序列.
 3. 基本序列收敛.
 
+# 函数极限定义
+
+**定义I(序列式定义)**
+
+设$a, A \in \bar{\mathbb{R}}$, 并设函数$f(x)$在$a$点的某个去心邻域$U^\*(a)$上有定义. 如果对于任何满足条件$x_n \rightarrow a$的序列$\\{x_n\\} \subset U^\*(a)$, 相应的函数值序列$\\{f(x_n)\\}$都以$A$为极限，那么我们就说当$x \rightarrow a$时, 函数$f(x)$的极限为$A$, 记为
+
+$$
+\lim_{x \rightarrow a}f(x) = A
+$$
+
+**定义II($\epsilon\text{-}\delta$式定义)**
+
+设$a, A \in \mathbb{R}$, 并设函数$f(x)$在$a$点的某个去心邻域$U^*(a,\eta)$上有定义. 如果对任意的$\epsilon > 0$, 存在$\delta > 0$, 使得只要$0 < |x - a| < \delta$, 就有
+
+$$
+|f(x) - A| < \epsilon
+$$
+
+那么我们就说: $x \rightarrow a$时函数$f(x)$的极限是$A$, 记为
+
+$$
+\lim_{x \rightarrow a}f(x) = A
+$$
+
+*定义II仅定义了自变量和因变量都是实数的情况, 除此之外还有$a = \pm\infty$, $A = \pm\infty$与实数进行组合的多种情况, 在此不一一列举.
+
+# 连续函数重要性质
+
+**定理1** 连续点附近有界.
+
+**定理2** 两个函数$f(x)$, $g(x)$在$x_0$点连续, 有
+
+1. $f(x) \pm g(x)$在$x_0$处连续.
+2. $f(x)g(x)$在$x_0$处连续.
+3. $\frac{f(x)}{g(x)}$在使得$g(x_0) \ne 0$的$x_0$处连续.
+4. $|f(x)|$在$x_0$处连续.
+5. 若$f(x_0) < g(x_0)$, 则存在$\delta > 0$使得对于$x \in U(x_0, \delta)$有$f(x) < g(x)$.
+
+**定理3(复合函数连续性)** 设函数$f(x)$在$x_0$处连续, 函数$g(x)$在$y_0=f(x_0)$处连续, 则复合函数$g \circ f(x) = g(f(x))$在$x_0$处连续.
+
+**定理4(介值定理)** 
+
+设函数$f$在闭区间$[a,b]$连续. 对于任意$\gamma$满足$f(a) < \gamma < f(b)$或$f(a) > \gamma > f(b)$, 存在$c \in (a,b)$使得
+
+$$
+f(c) = \gamma
+$$
+
+**定理5** 在闭区间$[a,b]$连续的函数$f$在$[a,b]$上有界.
+
+**定理6(最大值与最小值定理)** 设函数$f$在闭区间$[a,b]$上连续, $M,m$分别是该函数的上确界和下确界, 则存在$x', x'' \in [a,b]$使得
+
+$$
+f(x') = M, \quad f(x'') = m
+$$
+
+**定理7(一致连续性定理)** 在闭区间$[a,b]$上连续的函数$f$在$[a,b]$上一致连续.
+
+# 无穷量
+
+设函数$\phi(x)$和$\psi(x)$在$a$点的某个取心邻域$U^\*(a)$上有定义, 并设在$U^\*(a)$上$\phi(x) \ne 0$. 我们分别用记号$O$, $o$与$\sim$表示比值$\frac{\psi(x)}{\phi(x)}$在$a$点邻近的几种情况:
+
+1. $\psi(x)=O(\phi(x))$表示$\frac{\psi(x)}{\phi(x)}$是$x\rightarrow a$时的有界变量.
+2. $\psi(x)=o(\phi(x))$表示$\frac{\psi(x)}{\phi(x)}$是$x\rightarrow a$时的无穷小量.
+3. $\psi(x)\sim \phi(x)$表示$\lim_{x\rightarrow a}\frac{\psi(x)}{\phi(x)} = 1$.
+
+# 重要极限小记
+
+$$
+\begin{eqnarray}
+\lim_{x\rightarrow 0}&\frac{\sin x}{x} &= 1 \\\\
+\lim_{x\rightarrow \infty}&(1+\frac{1}{x})^x &= e \\\\
+\lim_{\alpha \rightarrow 0}&\frac{\ln(1+\alpha)}{\alpha} &= 1 \\\\
+\lim_{\alpha \rightarrow 0}&\frac{\log_b(1+\alpha)}{\alpha} &= \frac{1}{\ln b} \\\\
+\lim_{\alpha \rightarrow 0}&\frac{e^\alpha-1}{\alpha} &= 1 \\\\
+\lim_{\alpha \rightarrow 0}&\frac{(1+\alpha)^\mu - 1}{\alpha} &= \mu \\\\
+\end{eqnarray}
+$$
+
+# 基础微分
+
+**导数** 设函数$f(x)$在$x_0$点邻近有定义. 如果存在有穷极限
+
+$$
+\lim_{\Delta x \rightarrow 0}\frac{f(x_0+\Delta x)-f(x_0)}{\Delta x}
+$$
+
+那么我们就说函数$f(x)$在$x_0$点可导, 并把上述极限值称为$f(x)$在$x_0$点的导数, 记为$f'(x_0)$(Lagrange)或$\frac{df(x_0)}{dx}$(Leibnitz).
+
+**微分** 设函数$f(x)$在$x$点邻近有定义, 如果
+
+$$
+f(x+h)-f(x)=Ah + o(h)
+$$
+
+其中$A$与$h$无关, 那么我们就说函数$f$在$x$点可微. 
+
+设函数$y=f(x)$在$x_0$处可微, 引入记号
+
+$$
+\begin{align}
+dx &:= \Delta x \nonumber \\\\
+dy &:= f'(x_0)dx = f'(x_0)\Delta x \nonumber
+\end{align}
+$$
+
+$dy$叫做函数$y=f(x)$在$x_0$点的微分.
+
+# 初等函数导数表
+
+|函数|导数|备注|
+|:-:|:-:|:-:|
+|$C$|$0$||
+|$x^m$|$mx^{m-1}$|$m \in \mathbb{N}_+$|
+|$x^{-m}$|$-mx^{-m-1}$|$m \in \mathbb{N}_+, \quad m \ne 0$|
+|$x^\mu$|$\mu x^{\mu-1}$|$\mu \in \mathbb{R}, \quad x > 0$|
+|$\sin x$|$\cos x$||
+|$\cos x$|$-\sin x$||
+|$\tan x$|$\frac{1}{\cos^2 x}$|$x \ne k\pi + \frac{\pi}{2}$|
+|$\cot x$|$-\frac{1}{\sin^2 x}$|$x \ne k\pi$|
+|$\arcsin x$|$\frac{1}{\sqrt{1-x^2}}$|$\|x\| < 1$|
+|$\arccos x$|$-\frac{1}{\sqrt{1-x^2}}$|$\|x\| < 1$|
+|$\arctan x$|$\frac{1}{1+x^2}$||
+|$\text{arccot }x$|$-\frac{1}{1+x^2}$||
+|$e^x$|$e^x$||
+|$a^x$|$a^x\ln a$|$a>0$|
+|$\ln x$|$\frac{1}{x}$|$x>0$|
+|$\log_a x$|$\frac{1}{x} \log_a e$|$a>0, \quad x>0$|
+
 # 参考文献
 
 张筑生. 数学分析新讲. 北京大学出版社.

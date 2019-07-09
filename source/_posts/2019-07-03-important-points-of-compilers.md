@@ -114,8 +114,94 @@ A **deterministic finite automaton(DFA)** is a special case of an NFA where:
 
 **EXPLANATION**
 
-1. $\epsilon\text{-}closure(s)=\\{s_0\\} \cup \\{s | s\text{ can be reached from }s_0\text{ through an edge labeled }\epsilon\\}$.
+1. $\epsilon\text{-}closure(s)=\\{s | s\text{ can be reached from }s_0\text{ through an edge labeled }\epsilon\\}$.
 2. $move(S,a)=\\{s|s\text{ can be reached from states in }S\text{ through an edge labeled }a\\}$.
+
+## Algorithm: Simulating an NFA
+
+**INPUT** An input string $x$ terminated by an end-of-file character `eof`. An NFA $N$.
+
+**OUTPUT** Answer \"true\" if $N$ accepts $x$; \"false\" otherwise.
+
+**STEPS**
+
+1. Compute $S=\epsilon\text{-}closure(s_0)$, where $s_0$ is the start state of $N$.
+2. Do the following until an `eof` is read:
+    1. Read a character $c$.
+    2. Let $S=\epsilon\text{-}closure(move(S,c))$.
+3. If $S \cap F \ne \emptyset$, answer \"true\" and otherwise, answer \"false\".
+
+## Algorithm: Constructing an NFA from a Regular Expression
+
+**INPUT** A regular expression $r$ over alphabet $\Sigma$.
+
+**OUTPUT** An NFA $N$ accepting $L(r)$.
+
+**METHOD**
+
+Apply the following rules.
+
+1. The NFA accepting $L(\epsilon)$ is
+
+{% asset_img NFA-epsilon.png %}
+
+2. The NFA accepting $L(a)$, where $L(a)=\\{a\\}$, is
+
+{% asset_img NFA-a.png %}
+
+3. The NFA accepting $L(s|t)$, where both $s$ and $t$ are regular expressions, is
+
+{% asset_img NFA-union.png %}
+
+4. The NFA accepting $L(st)$, where both $s$ and $t$ are regular expressions, is
+
+{% asset_img NFA-concat.png %}
+
+5. The NFA accepting $L(s^\*)$, where $s$ is a regular expression, is
+
+{% asset_img NFA-asterisk.png %}
+
+## Algorithm: Constructing a DFA from a Regular Expression
+
+**INPUT** A regular expression $r$ over alphabet $\Sigma$.
+
+**OUTPUT** A DFA $D$ accepting $L(r)$.
+
+**STEPS**
+
+1. Construct a syntax tree $T$ from the augmented regular expression $(r)\\#$, and give each leaf a number, called a position. Note that all the leaves of $T$ is a single symbol.
+2. Compute $firstpos(n_0)$ as the unmarked start state $s_0$ of $D$, where $n_0$ is the root of $T$.
+3. Do the following until all the states in $D$ is marked:
+    1. Pick up an unmarked state $s$ in $D$, mark $s$.
+    2. For all symbols $a$ in $\Sigma$, do the following:
+        1. Compute $followpos(p)$ for all $p$ in $s$ whose symbol in $T$ is $a$ as a state $s_i$.
+        2. If $s_i$ is not a existed state of $D$, add it as an unmarked new state.
+        3. Create an edge $a$ between $s$ and $s_i$.
+
+**EXPLANATION**
+
+1. $firstpos(n)=\\{\text{some positions in the subtree rooted at node }n\\}$
+    Suppose the language expressed by the subtree rooted at $n$ is $L(T_n)$, and all the possible first symbols of strings in $L(T_n)$ form a set $\sigma$. $firstpos(n)$ is the set of positions corresponding to the symbols in $\sigma$.
+    <!-- The rules for computing $firstpos(n)$ are:
+    1. If $n$ is a leaf labeled $\epsilon$, $firstpos(n)=\emptyset$.
+    2. If $n$ is a leaf with position $i$ and it is not labeled $\epsilon$, $firstpos(n)=\\{i\\}$.
+    3. If $n = n_1|n_2$, $firstpos(n)=firstpos(n_1) \cup firstpos(n_2)$.
+    4. If $n = n_1n_2$, if $nullable(n_1)$, $firstpos(n)=firstpos(n_1) \cup firstpos(n_2)$, else $firstpos(n)=firstpos(n_1)$, where $nullable(n_1)$ means the subtree rooted at $n_1$ can generate an $\epsilon$.
+    5. If $n = n_1^\*$, $firstpos(n) = firstpos(n_1)$. -->
+2. $followpos(p)=\\{\text{positions corresponding to all the symbols that are possibly the next one of position }p\\}$
+    
+## Algorithm: Minimizing the Number of States of a DFA
+
+**INPUT** A DFA $D=(S, \Sigma, T, s_0, F)$.
+
+**OUTPUT** A DFA $D'$ accepting the same language as $D$ and having as few states as possible.
+
+**STEPS**
+
+1. Let $\Pi = {F, S-F}$ be the initial partition.
+2. Do the following until $\Pi$ remains the same:
+    For each group $G$ in $\Pi$, partition $G$ into subgroups such that two states $s$ and $t$ are in the same group if and only if for all input symbols $a$, state $s$ and $t$ have transitions on $a$ to states in the same group of $\Pi$.
+3. Choose one state of each group in $\Pi$ as the representative for that group, which is also a state in $D'$. The start/accepting state of $D'$ is the representative of the group containing the start/accepting state of $D$.
 
 # References
 
