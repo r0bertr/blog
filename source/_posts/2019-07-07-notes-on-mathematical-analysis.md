@@ -205,6 +205,146 @@ $dy$叫做函数$y=f(x)$在$x_0$点的微分.
 |$\ln x$|$\frac{1}{x}$|$x>0$|
 |$\log_a x$|$\frac{1}{x} \log_a e$|$a>0, \quad x>0$|
 
+# 不定积分
+
+设函数$f$在区间$I$上有定义, 函数$F$是$f$的一个原函数, 则函数簇
+
+$$
+F(x) + C (C \in \mathbb{R})
+$$
+
+表示$f$的一切原函数. 我们把这函数簇叫做函数$f(x)$的不定积分, 或者叫做微分形式$f(x)dx$的不定积分, 记为
+
+$$
+\int f(x)dx = F(x) + C
+$$
+
+# 不定积分表
+
+|不定积分表|
+|:---:|
+|$\int 0 dx = C$|
+|$\int 1 dx = x + C$|
+|$\int x^\mu dx = \frac{1}{\mu + 1} x^{\mu+1} + C (\mu \ne -1)$|
+|$\int x^{-1} dx = \int \frac{dx}{x} = \ln{\|x\|} + C$|
+|$\int \frac{dx}{x-a} = \ln{\|x-a\|} + C$|
+|$\int e^x dx = e^x + C$|
+|$\int a^x dx = \frac{a^x}{\ln{a}}+C(a > 0, a \ne 1)$|
+|$\int \cos x dx = \sin x + C$|
+|$\int \sin x dx = -\cos x + C$|
+|$\int \frac{dx}{\cos^2 x} = \tan x + C$|
+|$\int \frac{dx}{\sin^2 x} = - \cot x + C$|
+|$\int \frac{dx}{1+x^2} = \arctan x + C$|
+|$\int \frac{dx}{\sqrt{1-x^2}} = \arcsin x + C$|
+|$\int \frac{dx}{\sqrt{x^2 \pm a^2}} = \ln{\|x+\sqrt{x^2 \pm a^2} \|} + C$|
+
+# 基础微分方程
+
+## 可分离变量型
+
+形如
+
+$$
+\frac{dy}{dx} = g(x)h(y)
+$$
+
+的方程, 可将其变换为
+
+$$
+\frac{dy}{h(y)} = g(x)dx
+$$
+
+并在两边同时积分.
+
+## 齐次型
+
+形如
+
+$$
+\frac{dy}{dx} = f(\frac{y}{x})
+$$
+
+的方程, 可令$u = \frac{y}{x}$代入得到
+
+$$
+\frac{xdu}{dx} + u = f(u)
+$$
+
+并可进行变量分离得到
+
+$$
+\frac{du}{f(u)-u} = \frac{dx}{x}
+$$
+
+## 一阶线性型
+
+形如
+
+$$
+y' + p(x)y = q(x)
+$$
+
+的方程, 两边同时乘以$e^{\int p(x)dx}$可得
+
+$$
+\begin{align\*}
+&e^{\int p(x)dx}y' + e^{\int p(x)dx}p(x)y  = e^{\int p(x)dx}q(x) \\\\
+\Rightarrow& \[e^{\int p(x)dx}y\]\' = e^{\int p(x)dx}q(x) \\\\
+\Rightarrow& y = e^{-\int p(x)dx}\[\int e^{\int p(x)dx}q(x)dx + C_1\]
+\end{align\*}
+$$
+
+## 二阶可降阶型
+
+形如
+
+$$
+y'' = f(x, y')
+$$
+
+或
+
+$$
+y'' = f(y', y)
+$$
+
+的方程, 可令$y' = p$, 则$y'' = \frac{dp}{dx} = \frac{dp}{dy}p$, 并化为一阶方程.
+
+## 二阶线性常系数微分方程
+
+形如
+
+$$
+y'' + py' + qy = f(x)
+$$
+
+的方程, 考察其特征方程
+
+$$
+\lambda^2 + p\lambda + q = 0
+$$
+
+其齐次型($f(x)=0$)的通解如下表所示
+
+|特征根|通解|
+|:---:|:---:|
+|$\lambda_1, \lambda_2 \in \mathbb{R}, \lambda_1 \ne \lambda_2$|$y = C_1e^{\lambda_1x}+C_2e^{\lambda_2x}$|
+|$\lambda_1, \lambda_2 \in \mathbb{R}, \lambda_1 = \lambda_2$|$y=(C_1+C_2x)e^{\lambda_1x}$|
+|$\lambda_{1,2}=\alpha \pm i\beta$|$y=e^{ax}(C_1\cos \beta x + C_2 \sin \beta x)$|
+
+其非齐次型的特解如下表所示
+
+|$f(x)$形式|条件|特解|
+|:---:|:---:|:---:|
+||$\alpha \ne \lambda_1, \alpha \ne \lambda_2$|$y^\* = e^{\alpha x}Q_n(x)$|
+|$P_n(x)e^{\alpha x}$|$\alpha = \lambda_1$ 或 $\alpha = \lambda_2$|$y^\* = xe^{\alpha x}Q_n(x)$|
+||$\alpha = \lambda_1 = \lambda_2$|$y^\* = x^2e^{\alpha x}Q_n(x)$|
+||||
+|$e^{\alpha x}\[P_n(x)\cos \beta x + P_m(x)\sin \beta x\](\beta \ne 0)$|$\lambda \ne \alpha \pm i\beta$|$y^\* = e^{\alpha x}\[Q_l(x)\cos \beta x + R_l(x)\sin \beta x\]$|
+||$\lambda = \alpha \pm i\beta$|$y^\* = xe^{\alpha x}\[Q_l(x)\cos \beta x + R_l(x)\sin \beta x\]$|
+
+其中, $P_n(x)$为关于$x$的$n$次多项式, $l = \max\\{n, m\\}$.
+
 # 参考文献
 
 张筑生. 数学分析新讲. 北京大学出版社.
