@@ -238,7 +238,45 @@ $$
 |$\int \frac{dx}{\sqrt{1-x^2}} = \arcsin x + C$|
 |$\int \frac{dx}{\sqrt{x^2 \pm a^2}} = \ln{\|x+\sqrt{x^2 \pm a^2} \|} + C$|
 
+# 定积分
+
+设函数$f$在区间$[a,b]$有定义. 如果存在实数$I$, 使得对于任意无穷细分割序列$\{P^{(n)}\}$, 不论相应于每个分割$P^{(n)}$的标志点组$\xi^{(n)}$怎样选择, 都有
+
+$$
+\lim_{n \rightarrow +\infty} \sigma(f, P^{(n)}, \xi^{(n)})=I
+$$
+
+那么我们就说函数$f$在$[a,b]$上可积,并把$I$称为函数$f$在$[a,b]$上的定积分,记为
+
+$$
+\int_a^bf(x)dx = \lim_{|P| \rightarrow 0}\sigma(f,P,\xi)=I
+$$
+
+## 牛顿-莱布尼茨公式
+
+设函数$f$在闭区间$[a,b]$连续. 如果存在函数$F$在$[a,b]$连续, 在$(a,b)$可导, 并且满足
+
+$$
+F'(x) = f(x), \forall x \in (a,b)
+$$
+
+那么函数$f$在$[a,b]$上可积,并且
+
+$$
+\int_a^bf(x)dx=F(b)-F(a)
+$$
+
+## 二重积分的计算
+
+设函数$z = f(x,y)$在闭区间$D$上连续, 其中$D$由直线$x=a, x=b (a < b)$及曲线$y=\varphi_1(x), y=\varphi_2(x) (\varphi_1(x) \le \varphi_2(x), a \le x \le b)$围成. 这时$f(x,y)$的二重积分可表示成如下的累次积分
+
+$$
+\iint f(x,y)d\sigma = \int_a^b [\int_{\varphi_1(x)}^{\varphi_2(x)} f(x,y)dy]dx
+$$
+
 # 基础微分方程
+
+本记将基础微分方程分为5种类型，分别是可分离变量型、齐次型、一阶线性型、二阶可降阶型和二阶线性常系数微分方程。
 
 ## 可分离变量型
 
