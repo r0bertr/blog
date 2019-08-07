@@ -45,6 +45,24 @@ At this time, a perfect solution is using a stack. After pushing all the numbers
 
 As a good brother of stacks, queues are also easy to understand. It\'s **FIFO** property is extremely suitable to perform tasks with particular orders, especially when some tasks need to wait for some other tasks.
 
+# Heaps
+
+> In a max heap, for any given node $C$, if $P$ is a parent node of $C$, then the key (the value) of $P$ is greater than or equal to the key of $C$. In a min heap, the key of $P$ is less than or equal to the key of $C$.
+
+Heaps are often implemented by a binary tree, and a few important operations are listed below.
+
+## Insertion
+
+To insert a new node to a heap, the general idea is to do swapping after the node is inserted to the \"end\".
+
+{% asset_img heap-insertion.png %}
+
+## Deletion
+
+Only the root can be deleted. We move the node in the \"end\" to the root and heapify.
+
+{% asset_img heap-deletion.png %}
+
 # Binary Trees
 
 Binary trees are very powerful tools to solve difficult problems, but it is also difficult to determine when to use binary trees and what kinds of trees to use. Here some typical binary trees are introduced, but at first, let\'s remember the precise definition of a binary tree.
