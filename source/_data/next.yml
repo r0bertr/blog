@@ -128,6 +128,7 @@ menu:
   # Words: /words/
   8-Puzzle: /eight-puzzle/ || puzzle-piece
   XiangQi: /xiangqi/ || gamepad
+  # Bingo: /bingo/ || gamepad
   # SDVX:
   #   default: /sdvx/ || gamepad
   #   Tunes: /tunes || music

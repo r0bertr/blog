@@ -45,12 +45,10 @@ class XiangQi {
     $('.xq-piece').css('width', pieceSize).css('height', pieceSize);
   }
   onPieceHoverIn(e) {
-    $(this).css('cssText',
-      $(this).css('cssText') + 'border: 0.5px dashed yellow !important;');
+    this.style.cssText += 'border: 0.5px dashed yellow !important;';
   }
   onPieceHoverOut(e) {
-    $(this).css('cssText',
-      $(this).css('cssText') + 'border: none !important;');
+    this.style.cssText += 'border: none !important;';
   }
   onPieceClick(e) {
     var that = e.data.that;
@@ -481,8 +479,9 @@ class XiangQi {
           $(id).replaceWith(
             '<div class="xq-piece" id="' + id.slice(1, id.length) + '"></div>'
           );
-          $(id).css('cssText',
-            $(id).css('cssText') + 'border: 0.5px dashed yellow !important;');
+          // $(id).css('cssText',
+          //   $(id).css('cssText') + 'border: 0.5px dashed yellow !important;');
+          $(id)[0].style.cssText += 'border: 0.5px dashed yellow !important;';
           $(id).click({row: row, col: col, that: this}, this.onMove);
         } else {
           $(id).replaceWith(
@@ -493,8 +492,9 @@ class XiangQi {
             $(id).hover(this.onPieceHoverIn, this.onPieceHoverOut);
           }
           if (this.model[row][col].slice(3, 7) == 'path') {
-            $(id).css('cssText',
-              $(id).css('cssText') + 'border: 0.5px dashed yellow !important;');
+            // $(id).css('cssText',
+            //   $(id).css('cssText') + 'border: 0.5px dashed yellow !important;');
+            $(id)[0].style.cssText += 'border: 0.5px dashed yellow !important;';
             $(id).click({row: row, col: col, that: this}, this.onMove);
           }
         }
@@ -504,8 +504,9 @@ class XiangQi {
     }
     if (this.pickedPiece) {
       var id = this.getPieceID(this.pickedPiece.row, this.pickedPiece.col);
-      $(id).css('cssText',
-        $(id).css('cssText') + 'border: 0.5px dashed yellow !important;');
+      // $(id).css('cssText',
+      //   $(id).css('cssText') + 'border: 0.5px dashed yellow !important;');
+      $(id)[0].style.cssText += 'border: 0.5px dashed yellow !important;';
       $(id).unbind('mouseleave');
     }
     var pieceSize = this.width / 9.0;
