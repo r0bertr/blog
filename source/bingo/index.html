@@ -14,6 +14,23 @@ date: 2021-07-14 17:22:00
       <option value="rasis">Rasis</option>
       <option value="grace">Grace</option>
     </select>
+    <div>
+      <label>Upload your score (optional):</label>
+      <input type="file" id="input-file">
+    </div>
+    <button type="button" class="collapsible">File Format</button>
+    <div class="collapse-content">
+      <p>
+        6行のテキストファイル。行毎には半角スペースで分割するスコア三つ
+        例:<br>
+        10000000 10000000 10000000<br>
+        10000000 10000000 10000000<br>
+        10000000 10000000 10000000<br>
+        10000000 10000000 10000000<br>
+        10000000 10000000 10000000<br>
+        10000000 10000000 10000000
+      </p>
+    </div>
     <button id="btn-run">Run!!</button>
   </div>
   <div id="bingo">
