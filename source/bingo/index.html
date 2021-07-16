@@ -2,9 +2,48 @@
 title: Bingo
 date: 2021-07-14 17:22:00
 ---
-<div>
-Hello
+
+<link rel="stylesheet" href="index.css">
+
+<div id="container">
+  <div class="menu">
+    <label>Your VF:</label>
+    <input id="input-vf" type="number" value="19.338" />
+    <label>Your Team:</label>
+    <select id="input-team">
+      <option value="rasis">Rasis</option>
+      <option value="grace">Grace</option>
+    </select>
+    <button id="btn-run">Run!!</button>
+  </div>
+  <div id="bingo">
+    <div id="bingo-row-0" class="bingo-row">
+      <div id="bingo-cell-0-0" class="bingo-cell"></div>
+      <div id="bingo-cell-0-1" class="bingo-cell"></div>
+      <div id="bingo-cell-0-2" class="bingo-cell"></div>
+    </div>
+    <div id="bingo-row-1" class="bingo-row">
+      <div id="bingo-cell-1-0" class="bingo-cell"></div>
+      <div id="bingo-cell-1-1" class="bingo-cell"></div>
+      <div id="bingo-cell-1-2" class="bingo-cell"></div>
+    </div>
+    <div id="bingo-row-2" class="bingo-row">
+      <div id="bingo-cell-2-0" class="bingo-cell"></div>
+      <div id="bingo-cell-2-1" class="bingo-cell"></div>
+      <div id="bingo-cell-2-2" class="bingo-cell"></div>
+    </div>
+  </div>
+  <table>
+    <thead>
+      <th>Score</th>
+      <th>縦・横・斜め</th>
+      <th>Teams</th>
+    </thead>
+    <tbody id="results">
+    </tbody>
+  </table>
 </div>
 
-<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.bootcss.com/lodash.js/4.17.11/lodash.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+<script src="index.js"></script>
