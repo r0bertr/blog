@@ -6,11 +6,11 @@ $(function () {
   function computeScore(scores, levels, teams) {
     var total = _.sum(scores)
     var vfInt = parseInt(volforce)
-    var bonus = 1.0
+    var handicap = 1.0
     if (_.max(levels) > vfInt) {
-      bonus += ((_.max(levels) - vfInt) * 2 - 1 ) * 0.001
+      handicap += ((_.max(levels) - vfInt) * 2 - 1 ) * 0.001
     } else if (_.max(levels) < vfInt) {
-      bonus -= ((vfInt - _.max(levels) + 1) * 2 - 1) * 0.001
+      handicap -= ((vfInt - _.max(levels) + 1) * 2 - 1) * 0.001
     }
     var nOtherTeam = 0
     for (var i = 0; i < teams.length; i++) {
@@ -18,8 +18,8 @@ $(function () {
         nOtherTeam++
       }
     }
-    bonus += (nOtherTeam * 2 - 1) * 0.001
-    return total * bonus
+    var bonus = 1 + (nOtherTeam * 2 - 1) * 0.001
+    return total * bonus * handicap
   }
 
   function compute() {
@@ -228,57 +228,57 @@ $(function () {
     model = [[{
           'rasis_tune': '666(MXM)',
           'level': 20,
-          'rasis_score': 9513685,
+          'rasis_score': 10000000,
           'grace_tune': 'ΣgØ(MXM)',
-          'grace_score': 9441377
+          'grace_score': 10000000
         }, {
           'rasis_tune': 'Thank you for your playing music(MXM)',
           'level': 18,
-          'rasis_score': 9947833,
+          'rasis_score': 10000000,
           'grace_tune': 'Nhelv(MXM)',
-          'grace_score': 9919583
+          'grace_score': 10000000
         }, {
           'level': 17,
           'rasis_tune': 'Daisycutter(EXH)',
-          'rasis_score': 9157328,
+          'rasis_score': 10000000,
           'grace_tune': 'Booths of Fighters(EXH)',
-          'grace_score': 9876168
+          'grace_score': 10000000
         }], [{
           'level': 19,
           'rasis_tune': 'Innocent Tempest(VVD)',
-          'rasis_score': 9834397,
+          'rasis_score': 10000000,
           'grace_tune': 'Calamity Tempest(MXM)',
-          'grace_score': 9703337
+          'grace_score': 10000000
         }, {
           'level': 18,
           'rasis_tune': '月光乱舞(EXH)',
-          'rasis_score': 9879672,
+          'rasis_score': 10000000,
           'grace_tune': 'crossing blue(MXM)',
-          'grace_score': 9836471,
+          'grace_score': 10000000,
         }, {
           'level': 18,
           'rasis_tune': 'LegenD.(EXH)',
-          'rasis_score': 9809502,
+          'rasis_score': 10000000,
           'grace_tune': 'Nexta(GRV)',
-          'grace_score': 9930173
+          'grace_score': 10000000
         }], [{
           'level': 17,
           'rasis_tune': 'FREEDOM DiVE(EXH)',
-          'rasis_score': 9954894,
+          'rasis_score': 10000000,
           'grace_tune': 'HAELEQUIN(EXH)',
-          'grace_score': 9889807
+          'grace_score': 10000000
         }, {
           'level': 18,
           'rasis_tune': 'Sayonara Planet Wars(EXH)',
-          'rasis_score': 9893410,
+          'rasis_score': 10000000,
           'grace_tune': 'INF-B《L-aste-R》(EXH)',
-          'grace_score': 9803733
+          'grace_score': 10000000
         }, {
           'level': 19,
           'rasis_tune': 'Xronial Xero(MXM)',
-          'rasis_score': 9577825,
+          'rasis_score': 10000000,
           'grace_tune': 'BELEBOG(MXM)',
-          'grace_score': 9238972
+          'grace_score': 10000000
         }]]
     for (var row = 0; row < 3; row++) {
       for (var col = 0; col < 3; col++) {
